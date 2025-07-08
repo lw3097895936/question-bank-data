@@ -1,0 +1,44 @@
+{
+  "version": "1.0.0",
+  "lastUpdate": "2024-01-15",
+  "category": "C++ STL",
+  "topics": [
+    {
+      "id": "container",
+      "name": "容器专题",
+      "questions": [
+        {
+          "id": 1,
+          "title": "vector的push_back时间复杂度是多少？",
+          "answer": "【时间复杂度分析】\nvector的push_back在大多数情况下是O(1)时间复杂度，但在需要扩容时是O(n)。\n\n【详细说明】\n1. 一般情况下：O(1)\n   - 当vector有足够空间时，直接在末尾插入元素\n   - 只需要更新size和添加元素\n\n2. 扩容时：O(n)\n   - 当空间不足时，需要重新分配更大的内存\n   - 将原有元素复制到新内存位置\n   - 释放旧内存\n\n【扩容策略】\n- 大多数实现采用2倍扩容策略\n- 新容量 = max(当前容量 * 2, 所需容量)\n\n【代码示例】\n```cpp\nvector<int> v;\nv.push_back(1);  // O(1)\nv.push_back(2);  // O(1)\n// ... 当空间不足时\nv.push_back(100);  // 可能O(n)，需要扩容\n```\n\n【优化建议】\n- 如果知道大概的元素数量，可以预先reserve空间\n- 避免频繁的扩容操作"
+        },
+        {
+          "id": 2,
+          "title": "map和unordered_map的区别？",
+          "answer": "【底层实现】\n- map：基于红黑树实现，有序\n- unordered_map：基于哈希表实现，无序\n\n【时间复杂度】\n| 操作 | map | unordered_map |\n|------|-----|---------------|\n| 查找 | O(log n) | O(1)平均，O(n)最坏 |\n| 插入 | O(log n) | O(1)平均，O(n)最坏 |\n| 删除 | O(log n) | O(1)平均，O(n)最坏 |\n\n【内存使用】\n- map：内存使用相对稳定\n- unordered_map：需要额外的哈希表空间\n\n【使用场景】\n- map：需要有序遍历、对性能要求不是特别高\n- unordered_map：需要快速查找、插入、删除\n\n【代码示例】\n```cpp\n// map - 有序\nmap<string, int> m;\nm[\"apple\"] = 1;\nm[\"banana\"] = 2;\nm[\"cherry\"] = 3;\n// 遍历时按字母顺序\n\n// unordered_map - 无序\nunordered_map<string, int> um;\num[\"apple\"] = 1;\num[\"banana\"] = 2;\num[\"cherry\"] = 3;\n// 遍历顺序不确定\n```"
+        },
+        {
+          "id": 3,
+          "title": "list和vector的区别？",
+          "answer": "【底层实现】\n- vector：动态数组，连续内存\n- list：双向链表，非连续内存\n\n【时间复杂度对比】\n| 操作 | vector | list |\n|------|--------|------|\n| 随机访问 | O(1) | O(n) |\n| 头部插入/删除 | O(n) | O(1) |\n| 尾部插入/删除 | O(1) | O(1) |\n| 中间插入/删除 | O(n) | O(1) |\n\n【内存特点】\n- vector：内存连续，缓存友好\n- list：内存分散，缓存不友好\n\n【使用场景】\n- vector：需要随机访问、频繁在尾部操作\n- list：需要频繁在任意位置插入删除\n\n【代码示例】\n```cpp\n// vector - 随机访问快\nvector<int> v = {1, 2, 3, 4, 5};\ncout << v[2];  // O(1)\nv.push_back(6);  // O(1)\n\n// list - 插入删除快\nlist<int> l = {1, 2, 3, 4, 5};\nauto it = l.begin();\nadvance(it, 2);  // O(n)\nl.insert(it, 10);  // O(1)\n```"
+        }
+      ]
+    },
+    {
+      "id": "algorithm",
+      "name": "算法专题",
+      "questions": [
+        {
+          "id": 4,
+          "title": "sort函数的实现原理？",
+          "answer": "【STL sort实现】\nSTL的sort函数使用混合排序算法：\n1. 快速排序：主要算法\n2. 堆排序：当快速排序退化时使用\n3. 插入排序：小规模数据\n\n【算法选择】\n- 数据量 < 16：插入排序\n- 数据量 >= 16：快速排序\n- 快速排序深度 > 2*log(n)：堆排序\n\n【时间复杂度】\n- 平均：O(n log n)\n- 最坏：O(n log n)（避免了快速排序的最坏情况）\n\n【代码示例】\n```cpp\nvector<int> v = {5, 2, 8, 1, 9, 3};\nsort(v.begin(), v.end());  // 升序\nsort(v.begin(), v.end(), greater<int>());  // 降序\n\n// 自定义比较函数\nstruct Person {\n    string name;\n    int age;\n};\n\nvector<Person> people;\nsort(people.begin(), people.end(), \n    [](const Person& a, const Person& b) {\n        return a.age < b.age;\n    });\n```"
+        },
+        {
+          "id": 5,
+          "title": "find和binary_search的区别？",
+          "answer": "【find算法】\n- 线性查找，遍历整个容器\n- 时间复杂度：O(n)\n- 适用于无序容器\n\n【binary_search算法】\n- 二分查找，要求容器有序\n- 时间复杂度：O(log n)\n- 只返回bool值，不返回位置\n\n【使用场景】\n- find：小规模数据或无序数据\n- binary_search：大规模有序数据\n\n【代码示例】\n```cpp\nvector<int> v = {1, 3, 5, 7, 9, 11};\n\n// find - 线性查找\nauto it = find(v.begin(), v.end(), 5);\nif (it != v.end()) {\n    cout << \"Found at position: \" << it - v.begin() << endl;\n}\n\n// binary_search - 二分查找\nbool found = binary_search(v.begin(), v.end(), 5);\nif (found) {\n    cout << \"Found\" << endl;\n}\n\n// 如果需要位置，使用lower_bound\nauto pos = lower_bound(v.begin(), v.end(), 5);\nif (pos != v.end() && *pos == 5) {\n    cout << \"Found at position: \" << pos - v.begin() << endl;\n}\n```"
+        }
+      ]
+    }
+  ]
+} 
