@@ -1,0 +1,132 @@
+{
+  "version": "1.0.0",
+  "lastUpdate": "2024-01-15",
+  "category": "前端",
+  "topics": [
+    {
+      "id": "html-css",
+      "name": "HTML/CSS专题",
+      "questions": [
+        {
+          "id": 1,
+          "title": "HTML5 新特性有哪些？",
+          "answer": "【HTML5新特性】\n1. 语义化标签：header、nav、main、article、section、aside、footer等\n2. 表单增强：input类型（email、url、date、time、number等）、required、pattern属性\n3. 多媒体：video、audio标签，支持原生播放\n4. Canvas绘图：2D绘图API，可绘制图形、动画\n5. WebGL：3D图形渲染\n6. 本地存储：localStorage、sessionStorage\n7. Web Workers：后台线程处理\n8. WebSocket：全双工通信\n9. 地理定位：Geolocation API\n10. 拖拽API：Drag and Drop\n【实际应用】\n- 语义化提升SEO和可访问性\n- Canvas用于数据可视化、游戏开发\n- 本地存储用于缓存用户数据"
+        },
+        {
+          "id": 2,
+          "title": "CSS Flex 和 Grid 布局的区别？",
+          "answer": "【Flex布局】\n- 一维布局，主要处理行或列的排列\n- 适合导航栏、卡片列表等线性布局\n- 属性：flex-direction、justify-content、align-items、flex-wrap\n\n【Grid布局】\n- 二维布局，同时处理行和列\n- 适合页面整体布局、表格等\n- 属性：grid-template-columns、grid-template-rows、grid-area\n\n【选择建议】\n- 简单线性布局用Flex\n- 复杂二维布局用Grid\n- 两者可以结合使用"
+        },
+        {
+          "id": 3,
+          "title": "如何实现响应式布局？",
+          "answer": "【响应式布局方案】\n1. 媒体查询：@media screen and (max-width: 768px)\n2. 弹性布局：Flexbox、Grid\n3. 相对单位：rem、em、%、vw/vh\n4. 图片适配：max-width: 100%、object-fit\n5. 断点设计：移动端(320px)、平板(768px)、桌面(1024px)\n\n【最佳实践】\n- 移动优先设计\n- 使用相对单位\n- 设置合理的断点\n- 测试不同设备"
+        },
+        {
+          "id": 4,
+          "title": "移动端适配常见方案？",
+          "answer": "【移动端适配方案】\n1. viewport设置：<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n2. rem适配：根据屏幕宽度动态设置根字体大小\n3. vw/vh适配：视口单位，1vw = 视口宽度的1%\n4. 媒体查询：针对不同屏幕尺寸设置样式\n5. 弹性图片：max-width: 100%\n6. 触摸优化：增大点击区域、禁用双击缩放\n\n【实际应用】\n- 电商网站需要适配各种手机屏幕\n- 游戏界面需要适配不同分辨率"
+        }
+      ]
+    },
+    {
+      "id": "javascript",
+      "name": "JavaScript专题",
+      "questions": [
+        {
+          "id": 5,
+          "title": "JavaScript 事件委托是什么？",
+          "answer": "【事件委托原理】\n事件委托利用事件冒泡机制，将事件监听器绑定到父元素上，通过event.target判断具体触发事件的子元素。\n\n【优势】\n1. 减少内存占用：不需要为每个子元素绑定事件\n2. 动态元素支持：新增元素自动具有事件处理能力\n3. 性能优化：减少事件监听器数量\n\n【代码示例】\n```javascript\n// 传统方式\nlist.forEach(item => item.addEventListener(\"click\", handleClick));\n\n// 事件委托\nlist.addEventListener(\"click\", (e) => {\n  if (e.target.matches(\".item\")) {\n    handleClick(e);\n  }\n});\n```\n\n【应用场景】\n- 列表项点击处理\n- 表格行操作\n- 动态内容交互"
+        },
+        {
+          "id": 6,
+          "title": "闭包的原理和应用场景？",
+          "answer": "【闭包原理】\n闭包是指函数能够访问其词法作用域之外的变量，即使函数在原始作用域之外执行。\n\n【形成条件】\n1. 函数嵌套\n2. 内部函数引用外部变量\n3. 内部函数被外部引用\n\n【应用场景】\n1. 数据私有化：创建私有变量\n2. 函数工厂：创建特定功能的函数\n3. 模块化：实现模块模式\n4. 回调函数：保持状态\n\n【代码示例】\n```javascript\nfunction createCounter() {\n  let count = 0;\n  return {\n    increment: () => ++count,\n    getCount: () => count\n  };\n}\n```\n\n【注意事项】\n- 内存泄漏风险\n- 循环引用问题"
+        },
+        {
+          "id": 7,
+          "title": "Promise、async/await 的区别和原理？",
+          "answer": "【Promise原理】\nPromise是异步编程的解决方案，有三种状态：pending、fulfilled、rejected。\n\n【async/await原理】\nasync/await是Promise的语法糖，让异步代码看起来像同步代码。\n\n【区别对比】\n1. 语法：async/await更简洁易读\n2. 错误处理：async/await可以用try-catch\n3. 调试：async/await更容易调试\n4. 兼容性：Promise兼容性更好\n\n【代码示例】\n```javascript\n// Promise\nfetch(url)\n  .then(res => res.json())\n  .then(data => console.log(data))\n  .catch(err => console.error(err));\n\n// async/await\ntry {\n  const res = await fetch(url);\n  const data = await res.json();\n  console.log(data);\n} catch (err) {\n  console.error(err);\n}\n```"
+        },
+        {
+          "id": 8,
+          "title": "前端路由实现原理？",
+          "answer": "【路由实现原理】\n前端路由通过监听URL变化，动态渲染对应的组件，实现SPA（单页应用）。\n\n【实现方式】\n1. Hash路由：监听hashchange事件\n2. History路由：使用History API\n\n【Hash路由】\n```javascript\n// 监听hash变化\nwindow.addEventListener(\"hashchange\", () => {\n  const hash = location.hash.slice(1);\n  renderComponent(hash);\n});\n```\n\n【History路由】\n```javascript\n// 监听popstate事件\nwindow.addEventListener(\"popstate\", () => {\n  const path = location.pathname;\n  renderComponent(path);\n});\n\n// 编程式导航\nhistory.pushState({}, \"\", \"/new-path\");\n```\n\n【优缺点】\n- Hash：兼容性好，但URL不美观\n- History：URL美观，但需要服务器配置"
+        }
+      ]
+    },
+    {
+      "id": "framework",
+      "name": "框架专题",
+      "questions": [
+        {
+          "id": 9,
+          "title": "Vue 和 React 的核心原理和区别？",
+          "answer": "【Vue核心原理】\n1. 响应式系统：Object.defineProperty/Proxy实现数据劫持\n2. 虚拟DOM：VNode + diff算法\n3. 模板编译：template -> render函数\n4. 组件系统：单文件组件(.vue)\n\n【React核心原理】\n1. 虚拟DOM：JSX -> ReactElement\n2. Fiber架构：可中断的渲染过程\n3. Hooks：函数组件状态管理\n4. 单向数据流：props down, events up\n\n【主要区别】\n1. 学习曲线：Vue更易上手，React更灵活\n2. 生态：React生态更丰富\n3. 性能：Vue3性能更好，React18有并发特性\n4. 语法：Vue模板语法，React JSX\n5. 状态管理：Vue有Vuex/Pinia，React有Redux/Zustand\n\n【选择建议】\n- 快速开发选Vue\n- 大型项目选React"
+        },
+        {
+          "id": 10,
+          "title": "前端状态管理方案有哪些？",
+          "answer": "【状态管理方案】\n1. Vuex/Pinia (Vue生态)\n   - 集中式状态管理\n   - 支持模块化\n   - 开发工具支持\n\n2. Redux/Zustand (React生态)\n   - 不可变数据流\n   - 中间件机制\n   - 时间旅行调试\n\n3. MobX\n   - 响应式状态管理\n   - 自动追踪依赖\n   - 简单易用\n\n4. Context API (React)\n   - 内置状态管理\n   - 适合简单场景\n   - 避免过度设计\n\n【选择原则】\n- 小项目：Context API或组件状态\n- 中项目：Zustand或Pinia\n- 大项目：Redux或Vuex\n\n【最佳实践】\n- 避免过度使用全局状态\n- 合理拆分状态模块\n- 使用TypeScript提升类型安全"
+        },
+        {
+          "id": 11,
+          "title": "TypeScript 的类型系统有哪些亮点？",
+          "answer": "【TypeScript类型系统亮点】\n1. 静态类型检查：编译时发现类型错误\n2. 类型推断：自动推导变量类型\n3. 接口和类型别名：定义复杂数据结构\n4. 泛型：编写可复用的类型安全代码\n5. 联合类型和交叉类型：灵活的类型组合\n6. 高级类型：条件类型、映射类型、工具类型\n\n【核心特性】\n```typescript\n// 接口定义\ninterface User {\n  id: number;\n  name: string;\n  email?: string; // 可选属性\n}\n\n// 泛型\nfunction identity<T>(arg: T): T {\n  return arg;\n}\n\n// 联合类型\ntype Status = \"loading\" | \"success\" | \"error\";\n\n// 条件类型\ntype NonNullable<T> = T extends null | undefined ? never : T;\n```\n\n【实际应用】\n- 提升代码可维护性\n- 减少运行时错误\n- 改善开发体验\n- 支持重构和重构"
+        }
+      ]
+    },
+    {
+      "id": "performance",
+      "name": "性能优化专题",
+      "questions": [
+        {
+          "id": 12,
+          "title": "前端性能优化常见手段有哪些？",
+          "answer": "【前端性能优化手段】\n1. 资源优化\n   - 图片压缩、WebP格式、懒加载\n   - CSS/JS压缩、合并、CDN加速\n   - 字体文件优化、图标字体\n\n2. 加载优化\n   - 代码分割、懒加载\n   - 预加载、预连接\n   - 缓存策略（强缓存、协商缓存）\n\n3. 渲染优化\n   - 虚拟滚动、防抖节流\n   - 避免重排重绘\n   - 使用transform、opacity等GPU加速\n\n4. 网络优化\n   - HTTP/2、HTTP/3\n   - 服务端渲染(SSR)\n   - 静态资源优化\n\n【性能指标】\n- FCP (First Contentful Paint)\n- LCP (Largest Contentful Paint)\n- FID (First Input Delay)\n- CLS (Cumulative Layout Shift)\n\n【工具】\n- Lighthouse、WebPageTest\n- Chrome DevTools Performance\n- 真实用户监控(RUM)"
+        },
+        {
+          "id": 13,
+          "title": "前端如何做代码分割与懒加载？",
+          "answer": "【代码分割策略】\n1. 路由分割：按路由分割代码\n2. 组件分割：按需加载组件\n3. 第三方库分割：vendor chunk\n4. 动态导入：import()语法\n\n【懒加载实现】\n```javascript\n// React懒加载\nconst LazyComponent = React.lazy(() => import(\"./LazyComponent\"));\n\n// Vue懒加载\nconst LazyComponent = () => import(\"./LazyComponent.vue\");\n\n// 图片懒加载\nconst observer = new IntersectionObserver((entries) => {\n  entries.forEach(entry => {\n    if (entry.isIntersecting) {\n      entry.target.src = entry.target.dataset.src;\n    }\n  });\n});\n```\n\n【Webpack配置】\n```javascript\n// 动态导入\nimport(/* webpackChunkName: \"chunk-name\" */ \"./module\");\n\n// 分包配置\noptimization: {\n  splitChunks: {\n    chunks: \"all\",\n    cacheGroups: {\n      vendor: {\n        test: /[\\\\/]node_modules[\\\\/]/,\n        name: \"vendors\"\n      }\n    }\n  }\n}\n```\n\n【最佳实践】\n- 合理设置分割粒度\n- 避免过度分割\n- 监控包大小"
+        },
+        {
+          "id": 14,
+          "title": "Webpack/Vite 的核心原理？",
+          "answer": "【Webpack核心原理】\n1. 模块化：将一切文件视为模块\n2. 依赖图：构建模块依赖关系图\n3. 加载器：处理不同类型文件\n4. 插件系统：扩展构建功能\n5. 输出：生成最终文件\n\n【Vite核心原理】\n1. 开发环境：ES模块 + 浏览器原生支持\n2. 生产环境：Rollup打包\n3. 热更新：HMR (Hot Module Replacement)\n4. 预构建：依赖预构建提升速度\n\n【主要区别】\n1. 开发速度：Vite更快（无需打包）\n2. 配置复杂度：Vite更简单\n3. 生态：Webpack更成熟\n4. 构建速度：Vite更快\n\n【Webpack工作流程】\n1. 解析配置\n2. 开始编译\n3. 确定入口\n4. 编译模块\n5. 完成编译\n6. 输出资源\n\n【Vite优势】\n- 冷启动快\n- 热更新快\n- 配置简单\n- 原生ES模块支持"
+        }
+      ]
+    },
+    {
+      "id": "security-test",
+      "name": "安全与测试专题",
+      "questions": [
+        {
+          "id": 15,
+          "title": "前端安全（XSS、CSRF）如何防护？",
+          "answer": "【XSS防护】\n1. 输入过滤：对用户输入进行HTML编码\n2. 输出编码：使用innerText而不是innerHTML\n3. CSP策略：Content Security Policy\n4. HttpOnly Cookie：防止JS访问敏感Cookie\n\n【CSRF防护】\n1. Token验证：服务端生成随机Token\n2. SameSite Cookie：设置Cookie的SameSite属性\n3. Referer检查：验证请求来源\n4. 双重Cookie验证\n\n【代码示例】\n```javascript\n// XSS防护\nfunction escapeHtml(text) {\n  const div = document.createElement(\"div\");\n  div.textContent = text;\n  return div.innerHTML;\n}\n\n// CSRF Token\nconst token = document.querySelector(\"meta[name=csrf-token]\").content;\nfetch(\"/api/data\", {\n  headers: { \"X-CSRF-Token\": token }\n});\n```\n\n【其他安全措施】\n- HTTPS强制\n- 输入验证\n- 权限控制\n- 日志监控"
+        },
+        {
+          "id": 16,
+          "title": "前端自动化测试工具有哪些？",
+          "answer": "【单元测试】\n1. Jest：Facebook开发的测试框架\n2. Vitest：Vite生态的测试工具\n3. Mocha + Chai：灵活的测试组合\n4. Jasmine：BDD风格的测试框架\n\n【组件测试】\n1. React Testing Library：React组件测试\n2. Vue Test Utils：Vue组件测试\n3. Cypress Component Testing：组件E2E测试\n\n【E2E测试】\n1. Cypress：现代化的E2E测试工具\n2. Playwright：微软开发的测试工具\n3. Selenium：传统的自动化测试\n4. Puppeteer：Chrome自动化\n\n【测试最佳实践】\n```javascript\n// Jest示例\ndescribe(\"Calculator\", () => {\n  test(\"adds two numbers\", () => {\n    expect(add(1, 2)).toBe(3);\n  });\n});\n\n// React Testing Library\ntest(\"renders button\", () => {\n  render(<Button>Click me</Button>);\n  expect(screen.getByText(\"Click me\")).toBeInTheDocument();\n});\n```\n\n【测试策略】\n- 单元测试覆盖核心逻辑\n- 集成测试验证组件交互\n- E2E测试保证用户流程"
+        },
+        {
+          "id": 17,
+          "title": "前端如何做SEO优化？",
+          "answer": "【SEO优化要点】\n1. 语义化HTML：使用正确的标签结构\n2. Meta标签：title、description、keywords\n3. 结构化数据：JSON-LD、Microdata\n4. 图片优化：alt属性、压缩图片\n5. 内部链接：合理的链接结构\n6. 页面速度：优化加载性能\n\n【技术实现】\n```html\n<!-- Meta标签 -->\n<title>页面标题</title>\n<meta name=\"description\" content=\"页面描述\">\n<meta name=\"keywords\" content=\"关键词\">\n\n<!-- 结构化数据 -->\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Article\",\n  \"headline\": \"文章标题\"\n}\n</script>\n```\n\n【SPA SEO】\n1. 服务端渲染(SSR)\n2. 预渲染(Prerendering)\n3. 动态渲染\n4. 路由优化\n\n【工具】\n- Google Search Console\n- Lighthouse SEO审计\n- Screaming Frog\n- SEMrush"
+        },
+        {
+          "id": 18,
+          "title": "前端如何做国际化(i18n)？",
+          "answer": "【国际化方案】\n1. 文本翻译：使用翻译文件\n2. 数字格式化：货币、日期、时间\n3. 方向适配：RTL语言支持\n4. 图片本地化：文化适配\n\n【技术实现】\n```javascript\n// react-i18next\nimport { useTranslation } from \"react-i18next\";\n\nfunction Component() {\n  const { t } = useTranslation();\n  return <h1>{t(\"welcome\")}</h1>;\n}\n\n// Vue i18n\n<template>\n  <h1>{{ $t(\"welcome\") }}</h1>\n</template>\n```\n\n【翻译文件结构】\n```json\n{\n  \"zh\": {\n    \"welcome\": \"欢迎\",\n    \"user\": {\n      \"name\": \"姓名\",\n      \"email\": \"邮箱\"\n    }\n  },\n  \"en\": {\n    \"welcome\": \"Welcome\",\n    \"user\": {\n      \"name\": \"Name\",\n      \"email\": \"Email\"\n    }\n  }\n}\n```\n\n【最佳实践】\n- 使用key而不是硬编码文本\n- 考虑文本长度变化\n- 支持复数形式\n- 文化差异适配"
+        },
+        {
+          "id": 19,
+          "title": "小程序和H5的区别？",
+          "answer": "【技术架构】\n1. 小程序：基于微信/支付宝等平台\n2. H5：基于浏览器环境\n\n【开发差异】\n1. 语言：小程序用WXML/WXSS，H5用HTML/CSS\n2. 框架：小程序有生命周期，H5更灵活\n3. 组件：小程序有内置组件，H5需要自己实现\n4. API：小程序有平台API，H5用Web API\n\n【性能对比】\n1. 启动速度：小程序更快（预加载）\n2. 渲染性能：小程序更好（原生渲染）\n3. 网络请求：小程序有域名白名单限制\n4. 存储：小程序有存储限制\n\n【用户体验】\n1. 安装：小程序无需安装，H5直接访问\n2. 分享：小程序分享更方便\n3. 支付：小程序支付体验更好\n4. 权限：小程序权限管理更严格\n\n【选择建议】\n- 需要原生体验选小程序\n- 需要跨平台选H5\n- 考虑用户使用习惯"
+        }
+      ]
+    }
+  ]
+} 
