@@ -27,7 +27,7 @@
         "性能优化专题",
         "安全与测试专题"
       ],
-      "questionCount": 19
+      "questionCount": 29
     },
     {
       "id": "middleware",
@@ -104,8 +104,13 @@
       "questionCount": 5
     }
   ],
-  "totalQuestions": 93,
+  "totalQuestions": 103,
   "updateLog": [
+    {
+      "version": "1.0.1",
+      "date": "2024-01-15",
+      "description": "前端分类新增10个面试题目，涵盖JavaScript核心概念、React/Vue框架特性和性能优化"
+    },
     {
       "version": "1.0.0",
       "date": "2024-01-15",
